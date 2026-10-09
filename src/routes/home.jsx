@@ -1,11 +1,11 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { books } from "../data";
-import BookCard from "../BookCard";
-import Statuses from "../Statuses";
-import Reviews from "../Reviews";
-import "../App.css";
+import BookCard from "./BookCard";
+import Statuses from "./Statuses";
+import Reviews from "./Reviews";
+import { books } from "./data";
+import "./App.css";
 
 export default function Home() {
   const navigate = useNavigate();
