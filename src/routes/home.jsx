@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { books } from "./data";
 import BookCard from "./BookCard";
 import Statuses from "./Statuses";
 import Reviews from "./Reviews";
-import { books } from "./data";
 import "./App.css";
 
 export default function Home() {
@@ -88,7 +87,7 @@ export default function Home() {
                 <h2>Znajdź swoją książkę</h2>
                 <p>Wpisz tytuł, autora lub rok wydania.</p>
               </div>
-            ) : results.length ? (
+            ) : results.length > 0 ? (
               <div className="book-list">
                 {results.map((book) => (
                   <BookCard
