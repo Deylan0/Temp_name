@@ -552,3 +552,14 @@ h1 {
     padding: 18px;
   }
 }
+
+.app main h1,
+.app main h2,
+.book-info h2,
+.status-column h2,
+.statuses h1,
+.reviews h1,
+.reviews h2,
+.review-book h2 {
+  color: #555;
+}
