@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router";
 
-export function Home() {
+export function LogIn() {
   const navigate = useNavigate();
 
   return (
