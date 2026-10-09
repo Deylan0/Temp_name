@@ -1,6 +1,6 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from "react-router";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router';
 import './index.css';
 import Home from './routes/Home.jsx';
 import LogIn from './routes/LogIn.jsx';
@@ -13,6 +13,6 @@ createRoot(document.getElementById('root')).render(
       <Route path="/Log-In" element={<LogIn />} />
       <Route path="/Sign-Up" element={<SignUp />} />
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
 
 )
