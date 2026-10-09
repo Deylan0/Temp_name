@@ -12,7 +12,6 @@ const [error, setError] = useState("");
 const handleSubmit = (e) => {
 e.preventDefault();
 
-```
 if (password !== confirmPassword) {
   setError("Hasła nie są identyczne.");
   return;
@@ -20,14 +19,18 @@ if (password !== confirmPassword) {
 
 setError("");
 navigate("/Log-In");
-```
 
 };
 
-return ( <div className="login-page"> <div className="login-card"> <div className="login-icon">📓</div> <h1>Książkarnia</h1> <p className="login-subtitle">
-Twoje miejsce w świecie książek </p>
+return (
+<div className="login-page">
+<div className="login-card">
+<div className="login-icon">📓</div>
+<h1>Książkarnia</h1>
+<p className="login-subtitle">
+Twoje miejsce w świecie książek
+</p>
 
-```
     <h2>Utwórz konto</h2>
 
     <form onSubmit={handleSubmit}>
@@ -73,7 +76,6 @@ Twoje miejsce w świecie książek </p>
     </p>
   </div>
 </div>
-```
 
 );
 }
