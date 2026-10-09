@@ -1,4 +1,4 @@
-w większości stronach nagłówki mogą sie wydawać słabo wystylizowane, dziwny margin, basic font etc. nie wiem czemu, ale scc inaczej tu zadziałał niż u mnie i jedyne co zmieniłem globalnie to na dole app.css kolor, bo wcześniej się zlewały. jutro postaram się to ogarnąć
+w większości stronach nagłówki mogą sie wydawać słabo wystylizowane, dziwny margin, basic font etc. nie wiem czemu, ale css inaczej tu zadziałał niż u mnie i jedyne co zmieniłem globalnie to na dole app.css kolor, bo wcześniej się zlewały. jutro postaram się to ogarnąć, a jak ni to po środzie, działać działa.
 
 Co do bazy danych to dane z formularzy nie są przechowywane ani wysyłane (chyba tylko jest basic walidacja w postaci składni abc@xyz.qw), więc to jest do potencjalnego zrobienia, chociaż na te środę to nie ma być chyba 100% aplikacji, nw.
 
