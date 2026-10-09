@@ -1,7 +1,6 @@
-
 import { useState } from "react";
-import { useNavigate, Link } from "react-router";
-import "../App.css";
+import { Link, useNavigate } from "react-router";
+import "./App.css";
 
 export default function LogIn() {
   const navigate = useNavigate();
