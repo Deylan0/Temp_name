@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { books } from "./data";
+import { searchBooks } from "./openlibrary";
 import BookCard from "./BookCard";
 import Statuses from "./Statuses";
 import Reviews from "./Reviews";
@@ -11,6 +11,9 @@ export default function Home() {
 
   const [view, setView] = useState("home");
   const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const [statuses, setStatuses] = useState({
     1: "przeczytane",
@@ -22,6 +25,46 @@ export default function Home() {
     1: "Świetna książka, bardzo dobrze się ją czytało.",
   });
 
+  useEffect(() => {
+    const query = search.trim();
+
+    if (!query) {
+      setResults([]);
+      setLoading(false);
+      setError("");
+      return;
+    }
+
+    let cancelled = false;
+
+    const timeoutId = setTimeout(async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const books = await searchBooks(query);
+
+        if (!cancelled) {
+          setResults(books);
+        }
+      } catch {
+        if (!cancelled) {
+          setError("Nie udało się pobrać książek. Spróbuj ponownie.");
+          setResults([]);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }, 400);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutId);
+    };
+  }, [search]);
+
   const changeStatus = (id, status) => {
     setStatuses((prev) => ({ ...prev, [id]: status }));
   };
@@ -30,20 +73,10 @@ export default function Home() {
     setReviews((prev) => ({ ...prev, [id]: text }));
   };
 
-  const normalize = (text) =>
-    text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-  const results = search.trim()
-    ? books.filter((book) =>
-        normalize(`${book.title} ${book.author} ${book.year}`).includes(
-          normalize(search.trim())
-        )
-      )
-    : [];
-
   const goHome = () => {
     setView("home");
     setSearch("");
+    setResults([]);
   };
 
   return (
@@ -80,13 +113,21 @@ export default function Home() {
       <main>
         {view === "home" && (
           <>
-            <h1>{search ? "Wyniki wyszukiwania" : "Wyszukaj książkę"}</h1>
+            <h1>
+              {search.trim()
+                ? "Wyniki wyszukiwania"
+                : "Wyszukaj książkę"}
+            </h1>
 
             {!search.trim() ? (
               <div className="search-info">
                 <h2>Znajdź swoją książkę</h2>
                 <p>Wpisz tytuł, autora lub rok wydania.</p>
               </div>
+            ) : loading ? (
+              <p>Wyszukiwanie książek...</p>
+            ) : error ? (
+              <p>{error}</p>
             ) : results.length > 0 ? (
               <div className="book-list">
                 {results.map((book) => (
