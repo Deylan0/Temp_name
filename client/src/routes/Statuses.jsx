@@ -1,5 +1,5 @@
-import { books } from "./data";
-import "./App.css";
+import { books } from "../data";
+import "../App.css";
 
 const categories = [
   { name: "przeczytane", color: "#42b883" },

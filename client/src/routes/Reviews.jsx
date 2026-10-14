@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { books } from "./data";
-import "./App.css";
+import { books } from "../data";
+import "../App.css";
 
 export default function Reviews({ statuses, reviews, onSave }) {
   const [selected, setSelected] = useState(null);

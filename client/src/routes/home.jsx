@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { searchBooks } from "./openlibrary";
-import BookCard from "./BookCard";
+import { searchBooks } from "../openlibrary";
+import BookCard from "../BookCard";
 import Statuses from "./Statuses";
 import Reviews from "./Reviews";
-import "./App.css";
+import "../App.css";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -105,7 +105,7 @@ export default function Home() {
           </button>
 
           <button onClick={() => navigate("/Log-In")}>
-            Wyloguj
+            Zaloguj się
           </button>
         </nav>
       </header>
